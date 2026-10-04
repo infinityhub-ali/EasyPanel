@@ -1,3 +1,310 @@
-<!DOCTYPE html/>
+<!DOCTYPE html>
 <html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>EasyDeck — Your Digital Hub</title>
+  <meta name="description" content="EasyDeck — Search, AI, tools, education, market information, movies and more in one place.">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="navbar">
+    <a href="#" class="logo">
+      <span class="logo-mark">E</span>
+      <span>EasyDeck</span>
+    </a>
+
+    <nav>
+      <a href="#tools">Tools</a>
+      <a href="#learn">Learn</a>
+      <a href="#market">Market</a>
+      <a href="#movies">Movies</a>
+    </nav>
+
+    <button id="themeToggle" class="theme-btn">☾</button>
+  </header>
+
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+
+      <div class="hero-badge">
+        ⚡ One place. Many possibilities.
+      </div>
+
+      <h1>
+        Your digital world,
+        <span>simplified.</span>
+      </h1>
+
+      <p class="hero-text">
+        Search, learn, create, explore and stay updated —
+        all from one powerful hub.
+      </p>
+
+      <!-- SEARCH -->
+      <form id="searchForm" class="search-box">
+        <input
+          id="searchInput"
+          type="search"
+          placeholder="Search the web..."
+          autocomplete="off"
+        >
+
+        <button type="submit">
+          Search
+        </button>
+      </form>
+
+      <div class="quick-links">
+        <button data-search="weather today">🌤️ Weather</button>
+        <button data-search="latest technology news">💻 Technology</button>
+        <button data-search="latest crypto news">₿ Crypto</button>
+        <button data-search="movies">🎬 Movies</button>
+      </div>
+
+    </section>
+
+
+    <!-- QUICK ACCESS -->
+    <section class="section">
+
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">QUICK ACCESS</span>
+          <h2>Everything within reach.</h2>
+        </div>
+      </div>
+
+      <div class="card-grid">
+
+        <article class="feature-card ai-card">
+          <div class="card-icon">🤖</div>
+          <h3>AI Assistant</h3>
+          <p>
+            Ask questions, understand topics and create content.
+          </p>
+          <button class="card-action">Open AI →</button>
+        </article>
+
+        <article class="feature-card">
+          <div class="card-icon">🛠️</div>
+          <h3>Tools</h3>
+          <p>
+            Converters, QR tools, text utilities and more.
+          </p>
+          <a href="#tools" class="card-action">Explore →</a>
+        </article>
+
+        <article class="feature-card">
+          <div class="card-icon">🎓</div>
+          <h3>Learn</h3>
+          <p>
+            Simple explanations, notes and educational resources.
+          </p>
+          <a href="#learn" class="card-action">Learn →</a>
+        </article>
+
+        <article class="feature-card">
+          <div class="card-icon">📊</div>
+          <h3>Market</h3>
+          <p>
+            Crypto, currencies, technology and market information.
+          </p>
+          <a href="#market" class="card-action">Explore →</a>
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- WEATHER -->
+    <section class="section weather-section">
+
+      <div class="weather-widget">
+        <div>
+          <span class="eyebrow">LIVE INFORMATION</span>
+          <h2>Weather</h2>
+          <p id="weatherText">
+            Weather module coming soon.
+          </p>
+        </div>
+
+        <div class="weather-icon">
+          🌤️
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- TOOLS -->
+    <section id="tools" class="section">
+
+      <span class="eyebrow">TOOLS</span>
+      <h2>Useful things, instantly.</h2>
+
+      <div class="mini-grid">
+
+        <div class="mini-card">
+          <span>📐</span>
+          <h3>Unit Converter</h3>
+          <p>Length, weight, temperature and more.</p>
+        </div>
+
+        <div class="mini-card">
+          <span>🔳</span>
+          <h3>QR Tools</h3>
+          <p>Create and work with QR codes.</p>
+        </div>
+
+        <div class="mini-card">
+          <span>📝</span>
+          <h3>Text Tools</h3>
+          <p>Format, count, transform and analyze text.</p>
+        </div>
+
+        <div class="mini-card">
+          <span>📁</span>
+          <h3>File Utilities</h3>
+          <p>Useful browser-based file tools.</p>
+        </div>
+
+        <div class="mini-card">
+          <span>🎓</span>
+          <h3>Student Tools</h3>
+          <p>Tools designed for students.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- LEARN -->
+    <section id="learn" class="section dark-section">
+
+      <span class="eyebrow">LEARN</span>
+      <h2>Understand. Don't just search.</h2>
+
+      <div class="content-grid">
+
+        <div>
+          <h3>Computer & Technology</h3>
+          <p>
+            Simple explanations for computers, software,
+            internet and technology concepts.
+          </p>
+        </div>
+
+        <div>
+          <h3>Business</h3>
+          <p>
+            Business concepts explained in simple language.
+          </p>
+        </div>
+
+        <div>
+          <h3>Notes & Resources</h3>
+          <p>
+            Searchable educational resources and notes.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- MARKET -->
+    <section id="market" class="section">
+
+      <span class="eyebrow">MARKET & INFORMATION</span>
+      <h2>Stay informed.</h2>
+
+      <div class="info-grid">
+
+        <div class="info-card">
+          <span>₿</span>
+          <h3>Crypto</h3>
+          <p>Crypto information and market data.</p>
+        </div>
+
+        <div class="info-card">
+          <span>💱</span>
+          <h3>Currency</h3>
+          <p>Currency conversion and exchange information.</p>
+        </div>
+
+        <div class="info-card">
+          <span>💻</span>
+          <h3>Technology</h3>
+          <p>Technology information and updates.</p>
+        </div>
+
+        <div class="info-card">
+          <span>📰</span>
+          <h3>News</h3>
+          <p>Latest information from different categories.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- MOVIES -->
+    <section id="movies" class="section movie-section">
+
+      <span class="eyebrow">ENTERTAINMENT</span>
+      <h2>Movie Hub</h2>
+
+      <div class="movie-placeholder">
+
+        <div class="movie-icon">🎬</div>
+
+        <div>
+          <h3>Discover movies.</h3>
+          <p>
+            Reviews, ratings, information and multimedia —
+            coming in the next version.
+          </p>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <footer>
+
+    <div class="footer-brand">
+      <span class="logo-mark">E</span>
+      <strong>EasyDeck</strong>
+    </div>
+
+    <p>
+      Built as an evolving digital hub.
+    </p>
+
+    <small>
+      © <span id="year"></span> EasyDeck
+    </small>
+
+  </footer>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
   
