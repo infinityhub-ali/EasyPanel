@@ -1,136 +1,144 @@
+// ==========================================
+// EasyPanel - Fresh JavaScript
+// ==========================================
 
-const searchForm = document.getElementById("searchForm");
-const searchInput = document.getElementById("searchInput");
-const themeToggle = document.getElementById("themeToggle");
-const year = document.getElementById("year");
+document.addEventListener("DOMContentLoaded", () => {
 
+  // ---------- YEAR ----------
+  const year = document.getElementById("year");
 
-// YEAR
-
-year.textContent = new Date().getFullYear();
-
-
-// SEARCH
-
-searchForm.addEventListener("submit", function (event) {
-
-  event.preventDefault();
-
-  const query = searchInput.value.trim();
-
-  if (!query) {
-    searchInput.focus();
-    return;
+  if (year) {
+    year.textContent = new Date().getFullYear();
   }
 
-  const url =
-    "https://www.google.com/search?q=" +
-    encodeURIComponent(query);
 
-  window.open(url, "_blank");
+  // ---------- SEARCH ----------
+  const searchForm = document.getElementById("searchForm");
+  const searchInput = document.getElementById("searchInput");
 
-});
+  if (searchForm && searchInput) {
+
+    searchForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const query = searchInput.value.trim();
+
+      if (query !== "") {
+        const url =
+          "https://www.google.com/search?q=" +
+          encodeURIComponent(query);
+
+        window.open(url, "_blank");
+      }
+    });
+
+  }
 
 
-// QUICK SEARCH BUTTONS
+  // ---------- QUICK SEARCH BUTTONS ----------
+  const quickButtons = document.querySelectorAll("[data-search]");
 
-document.querySelectorAll("[data-search]")
-  .forEach(button => {
+  quickButtons.forEach((button) => {
 
     button.addEventListener("click", () => {
 
-      const query = button.dataset.search;
+      const query = button.getAttribute("data-search");
 
-      searchInput.value = query;
-
-      searchForm.requestSubmit();
+      if (searchInput && query) {
+        searchInput.value = query;
+        searchInput.focus();
+      }
 
     });
 
   });
 
 
-// THEME
+  // ---------- THEME TOGGLE ----------
+  const themeButton = document.getElementById("themeToggle");
 
-let lightMode =
-  localStorage.getItem("easydeck-theme") === "light";
+  if (themeButton) {
 
+    const savedTheme = localStorage.getItem("easypanel-theme");
 
-function updateTheme() {
+    if (savedTheme === "light") {
+      document.body.classList.add("light-mode");
+    }
 
-  if (lightMode) {
+    themeButton.addEventListener("click", () => {
 
-    document.documentElement.style.setProperty(
-      "--bg",
-      "#f5f7fb"
-    );
+      document.body.classList.toggle("light-mode");
 
-    document.documentElement.style.setProperty(
-      "--surface",
-      "#ffffff"
-    );
+      const isLight =
+        document.body.classList.contains("light-mode");
 
-    document.documentElement.style.setProperty(
-      "--surface-2",
-      "#eef1f6"
-    );
+      localStorage.setItem(
+        "easypanel-theme",
+        isLight ? "light" : "dark"
+      );
 
-    document.documentElement.style.setProperty(
-      "--text",
-      "#111318"
-    );
+    });
 
-    document.documentElement.style.setProperty(
-      "--muted",
-      "#5f6675"
-    );
-
-    themeToggle.textContent = "☀";
-
-  } else {
-
-    document.documentElement.style.setProperty(
-      "--bg",
-      "#08090d"
-    );
-
-    document.documentElement.style.setProperty(
-      "--surface",
-      "#11131a"
-    );
-
-    document.documentElement.style.setProperty(
-      "--surface-2",
-      "#181b24"
-    );
-
-    document.documentElement.style.setProperty(
-      "--text",
-      "#f5f7fb"
-    );
-
-    document.documentElement.style.setProperty(
-      "--muted",
-      "#9ba1b2"
-    );
-
-    themeToggle.textContent = "☾";
   }
-}
 
 
-themeToggle.addEventListener("click", () => {
+  // ---------- SMOOTH SCROLL ----------
+  const navigationLinks =
+    document.querySelectorAll('a[href^="#"]');
 
-  lightMode = !lightMode;
+  navigationLinks.forEach((link) => {
 
-  localStorage.setItem(
-    "easydeck-theme",
-    lightMode ? "light" : "dark"
-  );
+    link.addEventListener("click", (event) => {
 
-  updateTheme();
+      const targetID =
+        link.getAttribute("href");
+
+      if (
+        targetID &&
+        targetID !== "#"
+      ) {
+
+        const target =
+          document.querySelector(targetID);
+
+        if (target) {
+
+          event.preventDefault();
+
+          target.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+          });
+
+        }
+
+      }
+
+    });
+
+  });
+
+
+  // ---------- SIMPLE CARD ANIMATION ----------
+  const cards =
+    document.querySelectorAll(
+      ".card, .tool-card, .feature-card, .quick-card"
+    );
+
+  cards.forEach((card) => {
+
+    card.addEventListener("mouseenter", () => {
+      card.classList.add("card-hover");
+    });
+
+    card.addEventListener("mouseleave", () => {
+      card.classList.remove("card-hover");
+    });
+
+  });
+
+
+  // ---------- CONSOLE CHECK ----------
+  console.log("EasyPanel JavaScript loaded successfully.");
 
 });
-
-
-updateTheme();
