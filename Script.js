@@ -1,140 +1,160 @@
+/* =========================================
+   EasyPanel V1 — JavaScript
+   ========================================= */
+
+"use strict";
+
 document.addEventListener("DOMContentLoaded", () => {
+  const $ = (selector) => document.querySelector(selector);
 
-  // ---------- YEAR ----------
-  const year = document.getElementById("year");
+  const searchForm = $("#searchForm");
+  const searchInput = $("#searchInput");
+  const themeToggle = $("#themeToggle");
+  const assistantSearch = $("#assistantSearch");
+  const backTop = $("#backTop");
+  const toast = $("#toast");
+  const year = $("#year");
 
+  // Footer year
   if (year) {
     year.textContent = new Date().getFullYear();
   }
 
+  // Toast notification
+  let toastTimer;
 
-  // ---------- SEARCH ----------
-  const searchForm = document.getElementById("searchForm");
-  const searchInput = document.getElementById("searchInput");
+  function showToast(message) {
+    if (!toast) return;
 
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toast.classList.remove("show");
+    }, 2600);
+  }
+
+  // Search the web using Google
   if (searchForm && searchInput) {
-
     searchForm.addEventListener("submit", (event) => {
       event.preventDefault();
 
       const query = searchInput.value.trim();
 
-      if (query !== "") {
-        const url =
-          "https://www.google.com/search?q=" +
-          encodeURIComponent(query);
-
-        window.open(url, "_blank");
-      }
-    });
-
-  }
-
-
-  // ---------- QUICK SEARCH BUTTONS ----------
-  const quickButtons = document.querySelectorAll("[data-search]");
-
-  quickButtons.forEach((button) => {
-
-    button.addEventListener("click", () => {
-
-      const query = button.getAttribute("data-search");
-
-      if (searchInput && query) {
-        searchInput.value = query;
+      if (!query) {
         searchInput.focus();
+        showToast("Type something to search.");
+        return;
       }
 
+      const searchURL =
+        "https://www.google.com/search?q=" +
+        encodeURIComponent(query);
+
+      window.open(searchURL, "_blank", "noopener,noreferrer");
     });
-
-  });
-
-
-  // ---------- THEME TOGGLE ----------
-  const themeButton = document.getElementById("themeToggle");
-
-  if (themeButton) {
-
-    const savedTheme = localStorage.getItem("easypanel-theme");
-
-    if (savedTheme === "light") {
-      document.body.classList.add("light-mode");
-    }
-
-    themeButton.addEventListener("click", () => {
-
-      document.body.classList.toggle("light-mode");
-
-      const isLight =
-        document.body.classList.contains("light-mode");
-
-      localStorage.setItem(
-        "easypanel-theme",
-        isLight ? "light" : "dark"
-      );
-
-    });
-
   }
 
+  // Quick-search suggestions
+  document.querySelectorAll("[data-search]").forEach((button) => {
+    button.addEventListener("click", () => {
+      if (!searchInput) return;
 
-  // ---------- SMOOTH SCROLL ----------
-  const navigationLinks =
-    document.querySelectorAll('a[href^="#"]');
+      searchInput.value = button.dataset.search || "";
+      searchInput.focus();
 
-  navigationLinks.forEach((link) => {
+      searchInput.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+    });
+  });
 
-    link.addEventListener("click", (event) => {
+  // Theme toggle with saved preference
+  function applyTheme(theme) {
+    const isLight = theme === "light";
 
-      const targetID =
-        link.getAttribute("href");
+    document.body.classList.toggle("light-mode", isLight);
 
-      if (
-        targetID &&
-        targetID !== "#"
-      ) {
+    if (themeToggle) {
+      themeToggle.textContent = isLight ? "☾" : "☼";
+      themeToggle.setAttribute(
+        "aria-label",
+        isLight ? "Switch to dark theme" : "Switch to light theme"
+      );
+      themeToggle.title = isLight
+        ? "Switch to dark theme"
+        : "Switch to light theme";
+    }
+  }
 
-        const target =
-          document.querySelector(targetID);
+  let savedTheme = "dark";
 
-        if (target) {
+  try {
+    savedTheme = localStorage.getItem("easypanel-theme") || "dark";
+  } catch (error) {
+    // The site still works if browser storage is unavailable.
+  }
 
-          event.preventDefault();
+  applyTheme(savedTheme);
 
-          target.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const nextTheme = document.body.classList.contains("light-mode")
+        ? "dark"
+        : "light";
 
-        }
+      applyTheme(nextTheme);
 
+      try {
+        localStorage.setItem("easypanel-theme", nextTheme);
+      } catch (error) {
+        // Theme works for the current page even without storage.
       }
 
+      showToast(
+        nextTheme === "light"
+          ? "Light theme enabled."
+          : "Dark theme enabled."
+      );
     });
+  }
 
+  // Assistant section: focus the main search
+  if (assistantSearch && searchInput) {
+    assistantSearch.addEventListener("click", () => {
+      searchInput.scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+      });
+
+      searchInput.focus();
+      showToast("Ready when you are. Start with a search.");
+    });
+  }
+
+  // Back-to-top button
+  function updateBackTop() {
+    if (!backTop) return;
+
+    backTop.classList.toggle("visible", window.scrollY > 450);
+  }
+
+  window.addEventListener("scroll", updateBackTop, {
+    passive: true
   });
 
+  updateBackTop();
 
-  // ---------- SIMPLE CARD ANIMATION ----------
-  const cards =
-    document.querySelectorAll(
-      ".card, .tool-card, .feature-card, .quick-card"
-    );
-
-  cards.forEach((card) => {
-
-    card.addEventListener("mouseenter", () => {
-      card.classList.add("card-hover");
+  if (backTop) {
+    backTop.addEventListener("click", () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
     });
+  }
 
-    card.addEventListener("mouseleave", () => {
-      card.classList.remove("card-hover");
-    });
-
-  });
-
-
-  // ---------- CONSOLE CHECK ----------
-  console.log("EasyPanel JavaScript loaded successfully.");
-
+  console.log("EasyPanel V1 loaded successfully.");
 });
