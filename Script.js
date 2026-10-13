@@ -1,7 +1,3 @@
-// ==========================================
-// EasyPanel - Fresh JavaScript
-// ==========================================
-
 document.addEventListener("DOMContentLoaded", () => {
 
   // ---------- YEAR ----------
