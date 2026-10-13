@@ -3,308 +3,251 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>EasyDeck — Your Digital Hub</title>
-  <meta name="description" content="EasyDeck — Search, AI, tools, education, market information, movies and more in one place.">
+  <meta name="theme-color" content="#090d18">
+  <meta name="description" content="EasyPanel — your personal hub for search, tools, learning, technology and entertainment.">
+  <title>EasyPanel — Everything in One Place</title>
 
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 
 <body>
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
 
-  <header class="navbar">
-    <a href="#" class="logo">
-      <span class="logo-mark">E</span>
-      <span>EasyDeck</span>
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="EasyPanel home">
+      <span class="brand-icon">E</span>
+      <span>Easy<span class="accent">Panel</span></span>
     </a>
 
-    <nav>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#home">Home</a>
       <a href="#tools">Tools</a>
       <a href="#learn">Learn</a>
-      <a href="#market">Market</a>
-      <a href="#movies">Movies</a>
+      <a href="#discover">Discover</a>
     </nav>
 
-    <button id="themeToggle" class="theme-btn">☾</button>
+    <button class="theme-button" id="themeToggle" type="button"
+      aria-label="Toggle colour theme" title="Toggle theme">☼</button>
   </header>
 
-
   <main>
+    <section class="hero section-wrap" id="home">
+      <div class="eyebrow"><span class="live-dot"></span> YOUR PERSONAL DIGITAL SPACE</div>
 
-    <!-- HERO -->
-    <section class="hero">
-
-      <div class="hero-badge">
-        ⚡ One place. Many possibilities.
-      </div>
-
-      <h1>
-        Your digital world,
-        <span>simplified.</span>
+      <h1>Everything you need.<br>
+        <span class="gradient-text">All in one place.</span>
       </h1>
 
-      <p class="hero-text">
-        Search, learn, create, explore and stay updated —
-        all from one powerful hub.
+      <p class="hero-description">
+        Search smarter, discover useful tools, learn something new
+        and explore your world with EasyPanel.
       </p>
 
-      <!-- SEARCH -->
-      <form id="searchForm" class="search-box">
-        <input
-          id="searchInput"
-          type="search"
-          placeholder="Search the web..."
-          autocomplete="off"
-        >
-
-        <button type="submit">
-          Search
-        </button>
+      <form class="search-box" id="searchForm">
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input id="searchInput" type="search"
+          placeholder="Search anything on the web..."
+          aria-label="Search the web" autocomplete="off" required>
+        <button type="submit">Search <span>↗</span></button>
       </form>
 
-      <div class="quick-links">
-        <button data-search="weather today">🌤️ Weather</button>
-        <button data-search="latest technology news">💻 Technology</button>
-        <button data-search="latest crypto news">₿ Crypto</button>
-        <button data-search="movies">🎬 Movies</button>
+      <div class="search-hints">
+        <span>Try:</span>
+        <button type="button" data-search="Technology news">Technology</button>
+        <button type="button" data-search="Business ideas">Business</button>
+        <button type="button" data-search="Learn computer basics">Learning</button>
       </div>
 
+      <div class="hero-stats">
+        <div><strong>01</strong><span>One digital hub</span></div>
+        <div><strong>∞</strong><span>Ideas to explore</span></div>
+        <div><strong>24/7</strong><span>Ready when you are</span></div>
+      </div>
     </section>
 
-
-    <!-- QUICK ACCESS -->
-    <section class="section">
-
+    <section class="section-wrap section-block" id="quick-access">
       <div class="section-heading">
         <div>
-          <span class="eyebrow">QUICK ACCESS</span>
-          <h2>Everything within reach.</h2>
+          <span class="eyebrow">YOUR SHORTCUTS</span>
+          <h2>Quick access<span class="accent">.</span></h2>
         </div>
+        <span class="section-note">Pick a direction</span>
       </div>
 
-      <div class="card-grid">
+      <div class="feature-grid">
+        <a class="feature-card purple-card" href="#tools">
+          <span class="card-symbol">✳</span>
+          <span class="card-label">01 / UTILITIES</span>
+          <h3>Smart Tools</h3>
+          <p>Handy utilities for everyday tasks.</p>
+          <span class="card-arrow">Explore ↗</span>
+        </a>
 
-        <article class="feature-card ai-card">
-          <div class="card-icon">🤖</div>
-          <h3>AI Assistant</h3>
-          <p>
-            Ask questions, understand topics and create content.
-          </p>
-          <button class="card-action">Open AI →</button>
-        </article>
+        <a class="feature-card blue-card" href="#learn">
+          <span class="card-symbol">⌘</span>
+          <span class="card-label">02 / KNOWLEDGE</span>
+          <h3>Learn Zone</h3>
+          <p>Understand computers, business and more.</p>
+          <span class="card-arrow">Start learning ↗</span>
+        </a>
 
-        <article class="feature-card">
-          <div class="card-icon">🛠️</div>
-          <h3>Tools</h3>
-          <p>
-            Converters, QR tools, text utilities and more.
-          </p>
-          <a href="#tools" class="card-action">Explore →</a>
-        </article>
+        <a class="feature-card green-card" href="#discover">
+          <span class="card-symbol">◈</span>
+          <span class="card-label">03 / DISCOVERY</span>
+          <h3>Explore Hub</h3>
+          <p>Find technology, markets and entertainment.</p>
+          <span class="card-arrow">Discover ↗</span>
+        </a>
 
-        <article class="feature-card">
-          <div class="card-icon">🎓</div>
-          <h3>Learn</h3>
-          <p>
-            Simple explanations, notes and educational resources.
-          </p>
-          <a href="#learn" class="card-action">Learn →</a>
-        </article>
-
-        <article class="feature-card">
-          <div class="card-icon">📊</div>
-          <h3>Market</h3>
-          <p>
-            Crypto, currencies, technology and market information.
-          </p>
-          <a href="#market" class="card-action">Explore →</a>
-        </article>
-
+        <a class="feature-card orange-card" href="#assistant">
+          <span class="card-symbol">✧</span>
+          <span class="card-label">04 / ASSISTANT</span>
+          <h3>AI Corner</h3>
+          <p>Discover ways to work smarter with AI.</p>
+          <span class="card-arrow">Explore AI ↗</span>
+        </a>
       </div>
-
     </section>
 
-
-    <!-- WEATHER -->
-    <section class="section weather-section">
-
-      <div class="weather-widget">
+    <section class="section-wrap section-block" id="tools">
+      <div class="section-heading">
         <div>
-          <span class="eyebrow">LIVE INFORMATION</span>
-          <h2>Weather</h2>
-          <p id="weatherText">
-            Weather module coming soon.
-          </p>
+          <span class="eyebrow">GET THINGS DONE</span>
+          <h2>Everyday tools<span class="accent">.</span></h2>
         </div>
-
-        <div class="weather-icon">
-          🌤️
-        </div>
+        <span class="section-note">Useful. Simple. Accessible.</span>
       </div>
 
-    </section>
+      <div class="utility-grid">
+        <a class="utility-card" href="https://www.google.com/search?q=online+unit+converter" target="_blank" rel="noopener noreferrer">
+          <span class="utility-icon icon-violet">⇄</span>
+          <span><strong>Unit Converter</strong><small>Convert units online</small></span>
+          <span class="utility-arrow">↗</span>
+        </a>
 
+        <a class="utility-card" href="https://www.google.com/search?q=QR+code+generator" target="_blank" rel="noopener noreferrer">
+          <span class="utility-icon icon-blue">▦</span>
+          <span><strong>QR Code Tools</strong><small>Create and explore QR tools</small></span>
+          <span class="utility-arrow">↗</span>
+        </a>
 
-    <!-- TOOLS -->
-    <section id="tools" class="section">
+        <a class="utility-card" href="https://www.google.com/search?q=online+text+tools" target="_blank" rel="noopener noreferrer">
+          <span class="utility-icon icon-green">T</span>
+          <span><strong>Text Tools</strong><small>Explore text utilities</small></span>
+          <span class="utility-arrow">↗</span>
+        </a>
 
-      <span class="eyebrow">TOOLS</span>
-      <h2>Useful things, instantly.</h2>
+        <a class="utility-card" href="https://www.google.com/search?q=free+online+file+tools" target="_blank" rel="noopener noreferrer">
+          <span class="utility-icon icon-orange">▤</span>
+          <span><strong>File Utilities</strong><small>Find online file tools</small></span>
+          <span class="utility-arrow">↗</span>
+        </a>
 
-      <div class="mini-grid">
+        <a class="utility-card" href="https://www.google.com/search?q=student+study+tools" target="_blank" rel="noopener noreferrer">
+          <span class="utility-icon icon-pink">✎</span>
+          <span><strong>Student Zone</strong><small>Study and organise</small></span>
+          <span class="utility-arrow">↗</span>
+        </a>
 
-        <div class="mini-card">
-          <span>📐</span>
-          <h3>Unit Converter</h3>
-          <p>Length, weight, temperature and more.</p>
-        </div>
-
-        <div class="mini-card">
-          <span>🔳</span>
-          <h3>QR Tools</h3>
-          <p>Create and work with QR codes.</p>
-        </div>
-
-        <div class="mini-card">
-          <span>📝</span>
-          <h3>Text Tools</h3>
-          <p>Format, count, transform and analyze text.</p>
-        </div>
-
-        <div class="mini-card">
-          <span>📁</span>
-          <h3>File Utilities</h3>
-          <p>Useful browser-based file tools.</p>
-        </div>
-
-        <div class="mini-card">
-          <span>🎓</span>
-          <h3>Student Tools</h3>
-          <p>Tools designed for students.</p>
-        </div>
-
+        <a class="utility-card" href="https://www.google.com/search?q=free+AI+tools" target="_blank" rel="noopener noreferrer">
+          <span class="utility-icon icon-cyan">✧</span>
+          <span><strong>AI Tools</strong><small>Discover AI services</small></span>
+          <span class="utility-arrow">↗</span>
+        </a>
       </div>
-
     </section>
 
-
-    <!-- LEARN -->
-    <section id="learn" class="section dark-section">
-
-      <span class="eyebrow">LEARN</span>
-      <h2>Understand. Don't just search.</h2>
-
-      <div class="content-grid">
-
+    <section class="section-wrap section-block" id="learn">
+      <div class="section-heading">
         <div>
-          <h3>Computer & Technology</h3>
-          <p>
-            Simple explanations for computers, software,
-            internet and technology concepts.
-          </p>
+          <span class="eyebrow">GROW YOUR KNOWLEDGE</span>
+          <h2>Learn something new<span class="accent">.</span></h2>
         </div>
-
-        <div>
-          <h3>Business</h3>
-          <p>
-            Business concepts explained in simple language.
-          </p>
-        </div>
-
-        <div>
-          <h3>Notes & Resources</h3>
-          <p>
-            Searchable educational resources and notes.
-          </p>
-        </div>
-
       </div>
 
-    </section>
+      <div class="learn-grid">
+        <a class="learn-card" href="https://www.google.com/search?q=computer+fundamentals+for+beginners" target="_blank" rel="noopener noreferrer">
+          <span class="learn-number">01</span>
+          <div><h3>Computer Fundamentals</h3><p>Hardware, software, internet and digital basics.</p></div>
+          <span class="card-arrow">↗</span>
+        </a>
 
+        <a class="learn-card" href="https://www.google.com/search?q=business+management+basics" target="_blank" rel="noopener noreferrer">
+          <span class="learn-number">02</span>
+          <div><h3>Business & Management</h3><p>Explore business concepts in simple language.</p></div>
+          <span class="card-arrow">↗</span>
+        </a>
 
-    <!-- MARKET -->
-    <section id="market" class="section">
-
-      <span class="eyebrow">MARKET & INFORMATION</span>
-      <h2>Stay informed.</h2>
-
-      <div class="info-grid">
-
-        <div class="info-card">
-          <span>₿</span>
-          <h3>Crypto</h3>
-          <p>Crypto information and market data.</p>
-        </div>
-
-        <div class="info-card">
-          <span>💱</span>
-          <h3>Currency</h3>
-          <p>Currency conversion and exchange information.</p>
-        </div>
-
-        <div class="info-card">
-          <span>💻</span>
-          <h3>Technology</h3>
-          <p>Technology information and updates.</p>
-        </div>
-
-        <div class="info-card">
-          <span>📰</span>
-          <h3>News</h3>
-          <p>Latest information from different categories.</p>
-        </div>
-
+        <a class="learn-card" href="https://www.google.com/search?q=free+student+notes+and+study+resources" target="_blank" rel="noopener noreferrer">
+          <span class="learn-number">03</span>
+          <div><h3>Study Resources</h3><p>Discover notes, guides and learning materials.</p></div>
+          <span class="card-arrow">↗</span>
+        </a>
       </div>
-
     </section>
 
-
-    <!-- MOVIES -->
-    <section id="movies" class="section movie-section">
-
-      <span class="eyebrow">ENTERTAINMENT</span>
-      <h2>Movie Hub</h2>
-
-      <div class="movie-placeholder">
-
-        <div class="movie-icon">🎬</div>
-
+    <section class="section-wrap section-block" id="discover">
+      <div class="section-heading">
         <div>
-          <h3>Discover movies.</h3>
-          <p>
-            Reviews, ratings, information and multimedia —
-            coming in the next version.
-          </p>
+          <span class="eyebrow">STAY CURIOUS</span>
+          <h2>Explore the world<span class="accent">.</span></h2>
         </div>
-
       </div>
 
+      <div class="discover-grid">
+        <a class="discover-card market-discover" href="https://www.google.com/search?q=financial+market+news" target="_blank" rel="noopener noreferrer">
+          <span class="discover-symbol">↗</span>
+          <h3>Market Watch</h3>
+          <p>Explore market information and financial news.</p>
+          <span class="card-arrow">Explore markets ↗</span>
+        </a>
+
+        <a class="discover-card tech-discover" href="https://www.google.com/search?q=latest+technology+news" target="_blank" rel="noopener noreferrer">
+          <span class="discover-symbol">⌘</span>
+          <h3>Tech Radar</h3>
+          <p>Discover technology, gadgets and innovation.</p>
+          <span class="card-arrow">Explore tech ↗</span>
+        </a>
+
+        <a class="discover-card movie-discover" href="https://www.google.com/search?q=movie+reviews+and+ratings" target="_blank" rel="noopener noreferrer">
+          <span class="discover-symbol">▶</span>
+          <h3>Movie Hub</h3>
+          <p>Explore films, ratings and reviews.</p>
+          <span class="card-arrow">Find movies ↗</span>
+        </a>
+
+        <a class="discover-card news-discover" href="https://news.google.com/" target="_blank" rel="noopener noreferrer">
+          <span class="discover-symbol">◎</span>
+          <h3>News Desk</h3>
+          <p>Catch up on stories from around the world.</p>
+          <span class="card-arrow">Read news ↗</span>
+        </a>
+      </div>
     </section>
 
+    <section class="section-wrap assistant-section" id="assistant">
+      <div class="assistant-orb">✧</div>
+      <div class="assistant-copy">
+        <span class="eyebrow">YOUR NEXT STEP</span>
+        <h2>Make room for<br><span class="gradient-text">bigger ideas.</span></h2>
+        <p>EasyPanel brings useful destinations together. Start with a search and discover what works for you.</p>
+      </div>
+      <button class="primary-button" id="assistantSearch" type="button">Start exploring ↗</button>
+    </section>
   </main>
 
-
-  <footer>
-
-    <div class="footer-brand">
-      <span class="logo-mark">E</span>
-      <strong>EasyDeck</strong>
-    </div>
-
-    <p>
-      Built as an evolving digital hub.
-    </p>
-
-    <small>
-      © <span id="year"></span> EasyDeck
-    </small>
-
+  <footer class="footer section-wrap">
+    <a class="brand footer-brand" href="#home">
+      <span class="brand-icon">E</span>
+      <span>Easy<span class="accent">Panel</span></span>
+    </a>
+    <p>Your personal digital space.</p>
+    <span>© <span id="year">2026</span> EasyPanel</span>
   </footer>
 
-
-  <script src="script.js"></script>
-
+  <button class="back-top" id="backTop" type="button" aria-label="Back to top">↑</button>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
-  
